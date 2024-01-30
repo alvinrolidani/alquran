@@ -194,15 +194,15 @@ https://templatemo.com/tm-573-eduwell
 
     <script>
       var ayat = "";
-      let urls = window.location.href;
-      let paramString = urls.split("?")[1];
-      let queryString = new URLSearchParams(paramString);
-      // var urls = url.searchParams.get("surah");
-      // console.log(paramString[6]);
+      let urls = new URLSearchParams(window.location.search);
+
+      var paramString = urls.get("surah");
+
+      // console.log(paramString);
 
       $.ajax({
         type: "get",
-        url: "https://equran.id/api/v2/surat/" + paramString[6],
+        url: "https://equran.id/api/v2/surat/" + paramString,
         success: function (res) {
           console.log(res);
           for (let i = 0; i < res["data"]["ayat"].length; i++) {
